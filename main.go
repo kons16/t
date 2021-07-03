@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"os/exec"
 	"strings"
 )
@@ -12,7 +13,8 @@ func main() {
 	flag.Parse()
 	transportFileName := flag.Args()[0]
 
-	bytes, err := ioutil.ReadFile(".direction")
+	currentDir, _ := os.Getwd()
+	bytes, err := ioutil.ReadFile(currentDir + "/.direction")
 	if err != nil {
 		panic(err)
 	}
